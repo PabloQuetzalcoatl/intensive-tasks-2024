@@ -15,12 +15,17 @@ package com.walking.intensive.chapter1.task1;
 public class Task1 {
     public static void main(String[] args) {
 //        Для собственных проверок можете делать любые изменения в этом методе
-        int age = 0;
+        int age = -1;
 
         System.out.println(getAgeString(age));
     }
 
     static String getAgeString(int age) {
+        //Ранняя проверка
+        if (age<0){
+            return "Некорректный ввод";
+        }
+
         String result;
         int lastDigitAge = age % 10;// последняя цифра возраста
         boolean isSecondDecade = age % 100 - lastDigitAge == 10;//второе десятилетие, от 10 до 19 лет.
