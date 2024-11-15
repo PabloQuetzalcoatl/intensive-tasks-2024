@@ -22,7 +22,7 @@ public class Task1 {
 
     static String getAgeString(int age) {
         //Ранняя проверка
-        if (age<0){
+        if (age < 0) {
             return "Некорректный ввод";
         }
 
