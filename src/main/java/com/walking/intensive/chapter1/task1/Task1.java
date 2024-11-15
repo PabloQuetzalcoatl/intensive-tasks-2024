@@ -21,8 +21,17 @@ public class Task1 {
     }
 
     static String getAgeString(int age) {
-//        Место для вашего кода
+        String result;
+        int lastDigitAge = age % 10;// последняя цифра возраста
+        boolean isSecondDecade = age % 100 - lastDigitAge == 10;//второе десятилетие, от 10 до 19 лет.
 
-        return null; // Заглушка. При реализации - удалить
+        if (lastDigitAge == 1 & !isSecondDecade) {
+            result = "Вам " + age + " год";
+        } else if ((2 <= lastDigitAge & lastDigitAge <= 4) & !isSecondDecade) {
+            result = "Вам " + age + " года";
+        } else {
+            result = "Вам " + age + " лет";
+        }
+        return result;
     }
 }
