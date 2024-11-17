@@ -27,8 +27,8 @@ public class Task1 {
         }
 
         String result;
-        int lastDigitAge = age % 10;// последняя цифра возраста
-        boolean isSecondDecade = age % 100 - lastDigitAge == 10;//второе десятилетие, от 10 до 19 лет.
+        int lastDigitAge = age % 10; // последняя цифра возраста
+        boolean isSecondDecade = age % 100 - lastDigitAge == 10; //второе десятилетие, от 10 до 19 лет.
 
         if (lastDigitAge == 1 & !isSecondDecade) {
             result = "Вам " + age + " год";
