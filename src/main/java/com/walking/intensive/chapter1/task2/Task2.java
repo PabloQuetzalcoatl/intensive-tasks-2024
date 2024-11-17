@@ -55,7 +55,7 @@ public class Task2 {
 
         int modFlatNumber = flatNumber - 1;
         int numEntrance = (modFlatNumber) / (countFlatAtFloor * floorAmount);
-        int numFloor = ((modFlatNumber) % (countFlatAtFloor * floorAmount)) / 4;
+        int numFloor = ((modFlatNumber) % (countFlatAtFloor * floorAmount)) / countFlatAtFloor;
         int ordFlatNumber = (modFlatNumber) % countFlatAtFloor;
         String location = (ordFlatNumber < 2) ? "слева от лифта" : "справа от лифта";
         String orientation = (ordFlatNumber % 2 == 0) ? "влево" : "вправо";
