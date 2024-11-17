@@ -51,12 +51,12 @@ public class Task2 {
         //Но для дальнейших расчетов удобно будет вести всю нумерацию с "0"
         //Тогда операция целочисленного деления на 4 будет давать нам номер лестничной площадки
         //А при выводе просто приведем все к привычной нумерации прибавив 1
-        int modFlatNumber = flatNumber - 1; //модифицированный номер квартиры
-        int numEntrance = (modFlatNumber) / (4 * floorAmount); // Номер подъезда
-        int numFloor = ((modFlatNumber) % (4 * floorAmount)) / 4; // номер этажа
-        int ordFlatNumber = (modFlatNumber) % 4; // порядковый номер квартиры, на лестничной площадке
+        int modFlatNumber = flatNumber - 1;
+        int numEntrance = (modFlatNumber) / (4 * floorAmount);
+        int numFloor = ((modFlatNumber) % (4 * floorAmount)) / 4;
+        int ordFlatNumber = (modFlatNumber) % 4;
         String location = (ordFlatNumber < 2) ? "слева от лифта" : "справа от лифта";
         String orientation = (ordFlatNumber % 2 == 0) ? "влево" : "вправо";
-        return (modFlatNumber + 1) + " кв - " + (numEntrance + 1) + " подъезд, " + (numFloor + 1) + " этаж, " + location + ", " + orientation;
+        return String.format("%d кв - %d подъезд, %d этаж, %s, %s", modFlatNumber + 1, numEntrance + 1, numFloor + 1, location, orientation);
     }
 }
