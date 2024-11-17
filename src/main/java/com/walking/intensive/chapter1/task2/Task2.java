@@ -52,10 +52,11 @@ public class Task2 {
         //Нумерация квартир, подъездов etc, начинается с "1"
         //Но для дальнейших расчетов c использованием целочисленного деления удобно будет вести всю нумерацию с "0"
         //А при выводе просто приведем все к привычной нумерации прибавив 1
+        int countFlatAtFloor = 4;
         int modFlatNumber = flatNumber - 1;
-        int numEntrance = (modFlatNumber) / (4 * floorAmount);
-        int numFloor = ((modFlatNumber) % (4 * floorAmount)) / 4;
-        int ordFlatNumber = (modFlatNumber) % 4;
+        int numEntrance = (modFlatNumber) / (countFlatAtFloor * floorAmount);
+        int numFloor = ((modFlatNumber) % (countFlatAtFloor * floorAmount)) / 4;
+        int ordFlatNumber = (modFlatNumber) % countFlatAtFloor;
         String location = (ordFlatNumber < 2) ? "слева от лифта" : "справа от лифта";
         String orientation = (ordFlatNumber % 2 == 0) ? "влево" : "вправо";
         return String.format("%d кв - %d подъезд, %d этаж, %s, %s", modFlatNumber + 1, numEntrance + 1, numFloor + 1, location, orientation);
