@@ -15,7 +15,7 @@ package com.walking.intensive.chapter1.task1;
 public class Task1 {
     public static void main(String[] args) {
 //        Для собственных проверок можете делать любые изменения в этом методе
-        int age = -1;
+        int age = 129;
 
         System.out.println(getAgeString(age));
     }
@@ -26,17 +26,15 @@ public class Task1 {
             return "Некорректный ввод";
         }
 
-        String result;
-        int lastDigitAge = age % 10; // последняя цифра возраста
-        boolean isSecondDecade = age % 100 - lastDigitAge == 10; //второе десятилетие, от 10 до 19 лет.
+        int lastDigitAge = age % 10;
+        boolean isSecondDecade = age % 100 - lastDigitAge == 10;
 
-        if (lastDigitAge == 1 & !isSecondDecade) {
-            result = "Вам " + age + " год";
-        } else if ((2 <= lastDigitAge & lastDigitAge <= 4) & !isSecondDecade) {
-            result = "Вам " + age + " года";
-        } else {
-            result = "Вам " + age + " лет";
+        if (lastDigitAge == 1 && !isSecondDecade) {
+            return "Вам " + age + " год";
         }
-        return result;
+        if ((2 <= lastDigitAge && lastDigitAge <= 4) && !isSecondDecade) {
+            return "Вам " + age + " года";
+        }
+        return "Вам " + age + " лет";
     }
 }
