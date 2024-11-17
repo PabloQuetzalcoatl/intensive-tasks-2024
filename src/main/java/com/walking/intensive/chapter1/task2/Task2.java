@@ -34,22 +34,29 @@ package com.walking.intensive.chapter1.task2;
 public class Task2 {
     public static void main(String[] args) {
 //        Для собственных проверок можете делать любые изменения в этом методе
-        System.out.println(getFlatLocation(2, 2, 8));
+        System.out.println(getFlatLocation(2, 2, 2));
     }
 
     static String getFlatLocation(int floorAmount, int entranceAmount, int flatNumber) {
-        //
+        //Сначала - проверки этажей и подъездов
         if (floorAmount <= 0 || entranceAmount <= 0) {
             return "Некорректные входные данные";
         }
-        //
-        int maxNumber = flatNumber * entranceAmount * 4;
-        if (flatNumber <= 0 || flatNumber > maxNumber) {
+        //Для некорректной кв. по условию - отдельное сообщение
+        int maxFlatNumber = floorAmount * entranceAmount * 4;
+        if (flatNumber <= 0 || flatNumber > maxFlatNumber) {
             return "Такой квартиры не существует";
         }
-        int numEntrance = (flatNumber) / (4 * floorAmount) + 1;
-        int numFloor = ((flatNumber-1) % (4 * floorAmount)) / 4 + 1;
-        int ordFlatNumber = (flatNumber) % 4 ;
-        return "ваш подъезд " + numEntrance + ", ваш этаж "+numFloor+ ", порядк номер кв "+ordFlatNumber;
+        //Нумерация квартир, подъездов etc, начинается с "1"
+        //Но для дальнейших расчетов удобно будет вести всю нумерацию с "0"
+        //Тогда операция целочисленного деления на 4 будет давать нам номер лестничной площадки
+        //А при выводе просто приведем все к привычной нумерации прибавив 1
+        int modFlatNumber = flatNumber - 1; //модифицированный номер квартиры
+        int numEntrance = (modFlatNumber) / (4 * floorAmount); // Номер подъезда
+        int numFloor = ((modFlatNumber) % (4 * floorAmount)) / 4; // номер этажа
+        int ordFlatNumber = (modFlatNumber) % 4; // порядковый номер квартиры, на лестничной площадке
+        String location = (ordFlatNumber < 2) ? "слева от лифта" : "справа от лифта";
+        String orientation = (ordFlatNumber % 2 == 0) ? "влево" : "вправо";
+        return (modFlatNumber + 1) + " кв - " + (numEntrance + 1) + " подъезд, " + (numFloor + 1) + " этаж, " + location + ", " + orientation;
     }
 }
