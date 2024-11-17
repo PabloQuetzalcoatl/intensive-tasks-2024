@@ -42,9 +42,9 @@ public class Task2 {
         if (floorAmount <= 0 || entranceAmount <= 0) {
             return "Некорректные входные данные";
         }
-
+        int countFlatAtFloor = 4;
         //Для некорректной кв. по условию - отдельное сообщение
-        int maxFlatNumber = floorAmount * entranceAmount * 4;
+        int maxFlatNumber = floorAmount * entranceAmount * countFlatAtFloor;
         if (flatNumber <= 0 || flatNumber > maxFlatNumber) {
             return "Такой квартиры не существует";
         }
@@ -52,7 +52,7 @@ public class Task2 {
         //Нумерация квартир, подъездов etc, начинается с "1"
         //Но для дальнейших расчетов c использованием целочисленного деления удобно будет вести всю нумерацию с "0"
         //А при выводе просто приведем все к привычной нумерации прибавив 1
-        int countFlatAtFloor = 4;
+
         int modFlatNumber = flatNumber - 1;
         int numEntrance = (modFlatNumber) / (countFlatAtFloor * floorAmount);
         int numFloor = ((modFlatNumber) % (countFlatAtFloor * floorAmount)) / 4;
