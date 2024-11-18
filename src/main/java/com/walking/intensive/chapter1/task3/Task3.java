@@ -29,14 +29,15 @@ public class Task3 {
     }
 
     static boolean isLeap(int year) {
-        // Вопросы летоисчисления до нашей эры, Григорианского календаря etc
-        // по условиям задачи - игнорируем
-        if (year % 400 == 0) {
-            return true;
-        }
-        if (year % 100 == 0) {
-            return false;
-        }
-        return year % 4 == 0;
+       // Вопросы летоисчисления до нашей эры, Григорианского календаря etc
+       // по условиям задачи - игнорируем
+        return (year % 4 == 0)  && (year % 100 != 0) || (year % 400 == 0);
+//        if (year % 400 == 0) {
+//            return true;
+//        }
+//        if (year % 100 == 0) {
+//            return false;
+//        }
+//        return year % 4 == 0;
     }
 }
