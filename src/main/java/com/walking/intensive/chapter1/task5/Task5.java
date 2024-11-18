@@ -1,5 +1,7 @@
 package com.walking.intensive.chapter1.task5;
 
+import java.util.Arrays;
+
 /**
  * Задача поиска площади, величин углов, длин высот, биссектрис, медиан, радиусов вписанной и описанной вокруг
  * треугольника окружностей является центральной в Геометрии.
@@ -10,7 +12,19 @@ package com.walking.intensive.chapter1.task5;
  */
 public class Task5 {
     public static void main(String[] args) {
-//        Для собственных проверок можете делать любые изменения в этом методе
+        double[] heights = getHeights(12, 13, 5);
+        System.out.println(heights[0]);
+        System.out.println(heights[1]);
+        System.out.println(heights[2]);
+    }
+
+    /**
+     * Как известно, У треугольника сумма любых двух сторон должна быть больше третьей.
+     *
+     * Иначе две стороны просто "лягут" на третью и треугольника не получится.
+     */
+    static boolean isTriangleCorrect(double a, double b, double c) {
+        return (a + b) > c && (a + c) > b && (b + c) > a;
     }
 
     /**
@@ -23,9 +37,12 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getAreaByHeron(double a, double b, double c) {
-        //        Место для вашего кода
-
-        return 0; // Заглушка. При реализации - удалить
+        if (!isTriangleCorrect(a, b, c)) {
+            return -1;
+        }
+        double p = (a + b + c) / 2.0;
+        double S = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+        return S;
     }
 
     /**
@@ -36,9 +53,16 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать пустой массив нулевой длины.
      */
     static double[] getHeights(double a, double b, double c) {
-        //        Место для вашего кода
-
-        return null; // Заглушка. При реализации - удалить
+        if (!isTriangleCorrect(a, b, c)) {
+            return new double[0];
+        }
+        double[] heights = new double[3];
+        double S = getAreaByHeron(a,b,c);
+        heights[0] = 2*S / a;
+        heights[1] = 2*S / b;
+        heights[2] = 2*S / c;
+        Arrays.sort(heights);
+        return heights;
     }
 
     /**
