@@ -25,12 +25,18 @@ package com.walking.intensive.chapter1.task3;
  */
 public class Task3 {
     public static void main(String[] args) {
-//        Для собственных проверок можете делать любые изменения в этом методе
+        System.out.println(isLeap(-20));
     }
 
     static boolean isLeap(int year) {
-        //Место для вашего кода
-
-        return false; // Заглушка. При реализации - удалить
+        // Вопросы летоисчисления до нашей эры, Григорианского календаря etc
+        // по условиям задачи - игнорируем
+        if (year % 400 == 0) {
+            return true;
+        }
+        if (year % 100 == 0) {
+            return false;
+        }
+        return year % 4 == 0;
     }
 }
