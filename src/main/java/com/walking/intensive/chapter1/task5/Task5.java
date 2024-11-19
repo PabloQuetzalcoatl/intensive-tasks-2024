@@ -29,6 +29,10 @@ public class Task5 {
         return (a + b) > c && (a + c) > b && (b + c) > a;
     }
 
+    private static double getHalfPerimeter(double a, double b, double c) {
+        return (a + b + c) / 2.0;
+    }
+
     /**
      * Частным случаем Tеоремы Брахмагупты является формула Герона.
      *
@@ -43,8 +47,8 @@ public class Task5 {
             return -1;
         }
 
-        double p = (a + b + c) / 2.0;
-        double S = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+        double halfPerimeter = getHalfPerimeter(a, b, c);
+        double S = Math.sqrt(halfPerimeter * (halfPerimeter - a) * (halfPerimeter - b) * (halfPerimeter - c));
 
         return S;
     }
@@ -107,11 +111,11 @@ public class Task5 {
         }
 
         double[] bisectors = new double[3];
-        double p = (a + b + c) / 2.0;
+        double halfPerimeter = getHalfPerimeter(a, b, c);
 
-        bisectors[0] = 2 * Math.sqrt(a * b * p * (p - c)) / (a + b);
-        bisectors[1] = 2 * Math.sqrt(a * c * p * (p - b)) / (a + c);
-        bisectors[2] = 2 * Math.sqrt(c * b * p * (p - a)) / (c + b);
+        bisectors[0] = 2 * Math.sqrt(a * b * halfPerimeter * (halfPerimeter - c)) / (a + b);
+        bisectors[1] = 2 * Math.sqrt(a * c * halfPerimeter * (halfPerimeter - b)) / (a + c);
+        bisectors[2] = 2 * Math.sqrt(c * b * halfPerimeter * (halfPerimeter - a)) / (c + b);
         Arrays.sort(bisectors);
 
         return bisectors;
@@ -151,8 +155,8 @@ public class Task5 {
             return -1;
         }
 
-        double p = (a + b + c) / 2.0;
-        double r = Math.sqrt((p - a) * (p - b) * (p - c) / p);
+        double halfPerimeter = getHalfPerimeter(a, b, c);
+        double r = Math.sqrt((halfPerimeter - a) * (halfPerimeter - b) * (halfPerimeter - c) / halfPerimeter);
 
         return r;
     }
@@ -169,8 +173,7 @@ public class Task5 {
             return -1;
         }
 
-        double p = (a + b + c) / 2.0;
-        double R = a * b * c / (4 * Math.sqrt(p * (p - a) * (p - b) * (p - c)));
+        double R = a * b * c / (4 * getAreaByHeron(a, b, c));
         return R;
     }
 
