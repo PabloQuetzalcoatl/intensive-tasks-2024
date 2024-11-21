@@ -27,8 +27,14 @@ package com.walking.intensive.chapter2.task7;
  */
 public class Task7 {
     public static void main(String[] args) {
-        System.out.println(getFriendlyPair(6000));
+        long m1 = System.currentTimeMillis();
+
+        System.out.println(getFriendlyPair(1300));
         //System.out.println(getSumProperDivisor(5));
+
+        long m2 = System.currentTimeMillis();
+        System.out.println("Total:"+(m2-m1)/1000.0);
+
     }
 
     /**
@@ -50,7 +56,7 @@ public class Task7 {
      * Проверяет является ли пара чисел m и n дружественной
      */
     static boolean isFriendlyPair(int n, int m){
-        return getSumProperDivisor(n) == m && getSumProperDivisor(m) == n && m != n;
+        return m != n && getSumProperDivisor(n) == m && getSumProperDivisor(m) == n;
     }
 
     static int getFriendlyPair(int n) {
@@ -59,7 +65,7 @@ public class Task7 {
         //поступим по простому попарно переберем все числа от 1 до n
         //и сравним их на дружественность
         for (int i=1;i<=n;i++){
-            for (int j=1;j<=n;j++){
+            for (int j=i;j<=n;j++){
                 if (isFriendlyPair(i, j)){
                     System.out.printf("%d %d - friendly pair%n",i,j);
                 }
