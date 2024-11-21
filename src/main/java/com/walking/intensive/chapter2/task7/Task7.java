@@ -29,7 +29,7 @@ public class Task7 {
     public static void main(String[] args) {
         long m1 = System.currentTimeMillis();
 
-        System.out.println(getFriendlyPair(1300));
+        System.out.println(getFriendlyPair(2000));
         //System.out.println(getSumProperDivisor(5));
 
         long m2 = System.currentTimeMillis();
@@ -44,7 +44,8 @@ public class Task7 {
      */
     static int getSumProperDivisor(int n) {
         int sum = 0;
-        for (int i = 1; i < n; i++) {
+        int halfn = n/2;
+        for (int i = 1; i <= halfn; i++) {
             if (n % i == 0) {
                 sum += i;
             }
