@@ -27,11 +27,46 @@ package com.walking.intensive.chapter2.task7;
  */
 public class Task7 {
     public static void main(String[] args) {
-//        Для собственных проверок можете делать любые изменения в этом методе
+        System.out.println(getFriendlyPair(6000));
+        //System.out.println(getSumProperDivisor(5));
+    }
+
+    /**
+     * n Натуральное число
+     * возвращяет сумму всех собственных делителей числа n
+     * Собственным делителем числа называется всякий его делитель, отличный от самого числа.
+     */
+    static int getSumProperDivisor(int n) {
+        int sum = 0;
+        for (int i = 1; i < n; i++) {
+            if (n % i == 0) {
+                sum += i;
+            }
+        }
+        return sum;
+    }
+
+    /**
+     * Проверяет является ли пара чисел m и n дружественной
+     */
+    static boolean isFriendlyPair(int n, int m){
+        return getSumProperDivisor(n) == m && getSumProperDivisor(m) == n && m != n;
     }
 
     static int getFriendlyPair(int n) {
-        // Ваш код
+        // нужно найти все пары друж. чисел  в диапазоне от 1 до n
+        //
+        //поступим по простому попарно переберем все числа от 1 до n
+        //и сравним их на дружественность
+        for (int i=1;i<=n;i++){
+            for (int j=1;j<=n;j++){
+                if (isFriendlyPair(i, j)){
+                    System.out.printf("%d %d - friendly pair%n",i,j);
+                }
+            }
+
+        }
+
         return 0;
     }
 }
