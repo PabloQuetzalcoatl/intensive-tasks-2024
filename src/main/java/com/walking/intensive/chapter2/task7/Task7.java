@@ -53,9 +53,14 @@ public class Task7 {
 
     /**
      * Проверяет является ли пара чисел m и n дружественной
+     * n и m по определению дружественных должны быть различны
      */
     static boolean isFriendlyPair(int n, int m){
-        return m != n && getSumProperDivisor(n) == m && getSumProperDivisor(m) == n;
+        // Всегда вначале проверяем меньшее
+        if (n<m){
+            return getSumProperDivisor(n) == m && getSumProperDivisor(m) == n;
+        }
+        return m != n && getSumProperDivisor(m) == n && getSumProperDivisor(n) == m;
     }
 
     static int getFriendlyPair(int n) {
@@ -73,6 +78,6 @@ public class Task7 {
 
         }
 
-        return 0;
+        return result;
     }
 }
