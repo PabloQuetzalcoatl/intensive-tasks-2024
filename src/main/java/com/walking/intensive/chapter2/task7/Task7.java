@@ -28,10 +28,7 @@ package com.walking.intensive.chapter2.task7;
 public class Task7 {
     public static void main(String[] args) {
         long m1 = System.currentTimeMillis();
-
-        System.out.println(getFriendlyPair(2000));
-        //System.out.println(getSumProperDivisor(5));
-
+        System.out.println(getFriendlyPair(6000));
         long m2 = System.currentTimeMillis();
         System.out.println("Total:"+(m2-m1)/1000.0);
 
@@ -43,11 +40,12 @@ public class Task7 {
      * Собственным делителем числа называется всякий его делитель, отличный от самого числа.
      */
     static int getSumProperDivisor(int n) {
-        int sum = 0;
-        int halfn = n/2;
-        for (int i = 1; i <= halfn; i++) {
+        int sum = 1; // 1 - всегда будет среди делителей
+        int maxDivisor = (int)Math.sqrt(n);
+        for (int i = 2; i <= maxDivisor; i++) {
             if (n % i == 0) {
                 sum += i;
+                sum += n/i;
             }
         }
         return sum;
@@ -65,6 +63,7 @@ public class Task7 {
         //
         //поступим по простому попарно переберем все числа от 1 до n
         //и сравним их на дружественность
+        int result = -1;
         for (int i=1;i<=n;i++){
             for (int j=i;j<=n;j++){
                 if (isFriendlyPair(i, j)){
