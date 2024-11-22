@@ -28,7 +28,7 @@ package com.walking.intensive.chapter2.task7;
 public class Task7 {
     public static void main(String[] args) {
         long m1 = System.currentTimeMillis();
-        System.out.println(getFriendlyPair(6000));
+        System.out.println(getFriendlyPair(1_000_000));
         long m2 = System.currentTimeMillis();
         System.out.println("Total:"+(m2-m1)/1000.0);
 
@@ -51,31 +51,19 @@ public class Task7 {
         return sum;
     }
 
-    /**
-     * Проверяет является ли пара чисел m и n дружественной
-     * n и m по определению дружественных должны быть различны
-     */
-    static boolean isFriendlyPair(int n, int m){
-        // Всегда вначале проверяем меньшее
-        if (n<m){
-            return getSumProperDivisor(n) == m && getSumProperDivisor(m) == n;
-        }
-        return m != n && getSumProperDivisor(m) == n && getSumProperDivisor(n) == m;
-    }
-
     static int getFriendlyPair(int n) {
         // нужно найти все пары друж. чисел  в диапазоне от 1 до n
-        //
-        //поступим по простому попарно переберем все числа от 1 до n
-        //и сравним их на дружественность
+        // для каждого числа есть только один кандидат на дружественное
+        //это число равное сумме его собственных делителей,его и проверим
         int result = -1;
         for (int i=1;i<=n;i++){
-            for (int j=i;j<=n;j++){
-                if (isFriendlyPair(i, j)){
-                    System.out.printf("%d %d - friendly pair%n",i,j);
-                }
+            int friendCandidate = getSumProperDivisor(i);
+            // по условию вариант кагда число дружественно самому себе мы не рассматриваем
+            // мы начинаем с 1-цы и будем проверять кандидатов только больше текущего значения
+            // если кандидат меньше текущего, значит мы уже нашли его ранее
+            if (i < friendCandidate && getSumProperDivisor(friendCandidate) == i){
+                System.out.printf("%d %d - friendly pair%n",i,friendCandidate);
             }
-
         }
 
         return result;
