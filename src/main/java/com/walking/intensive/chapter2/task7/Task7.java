@@ -30,7 +30,7 @@ public class Task7 {
         long m1 = System.currentTimeMillis();
         System.out.println(getFriendlyPair(1_000_000));
         long m2 = System.currentTimeMillis();
-        System.out.println("Total:"+(m2-m1)/1000.0);
+        System.out.println("Total:" + (m2 - m1) / 1000.0);
 
     }
 
@@ -41,31 +41,32 @@ public class Task7 {
      */
     static int getSumProperDivisor(int n) {
         int sum = 1; // 1 - всегда будет среди делителей
-        int maxDivisor = (int)Math.sqrt(n);
+        int maxDivisor = (int) Math.sqrt(n);
         for (int i = 2; i <= maxDivisor; i++) {
             if (n % i == 0) {
                 sum += i;
-                sum += n/i;
+                sum += n / i;
             }
         }
         return sum;
     }
 
     static int getFriendlyPair(int n) {
-        // нужно найти все пары друж. чисел  в диапазоне от 1 до n
-        // для каждого числа есть только один кандидат на дружественное
-        //это число равное сумме его собственных делителей,его и проверим
-        int result = -1;
-        for (int i=1;i<=n;i++){
+        int maxN = 1_000_000;
+        if (n < 1 || n > maxN) {
+            return -1;
+        }
+        // нужно найти максимальное - просматриваем с конца
+        for (int i = n; i >= 1; i--) {
+            // для каждого числа есть только один кандидат на дружественное
+            // это число равное сумме его собственных делителей,его и проверим
             int friendCandidate = getSumProperDivisor(i);
             // по условию вариант кагда число дружественно самому себе мы не рассматриваем
-            // мы начинаем с 1-цы и будем проверять кандидатов только больше текущего значения
-            // если кандидат меньше текущего, значит мы уже нашли его ранее
-            if (i < friendCandidate && getSumProperDivisor(friendCandidate) == i){
-                System.out.printf("%d %d - friendly pair%n",i,friendCandidate);
+            if (i != friendCandidate && getSumProperDivisor(friendCandidate) == i) {
+                return i;
             }
         }
-
-        return result;
+        //если дружественных нет вернем 0
+        return 0;
     }
 }
