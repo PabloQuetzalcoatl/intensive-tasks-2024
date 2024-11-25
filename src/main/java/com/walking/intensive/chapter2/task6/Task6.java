@@ -67,14 +67,18 @@ public class Task6 {
             return -1;
         }
 
-        int a = Math.max(m, n);
-        int b = Math.min(m, n);
-        while (b != 0) {
-            int remainder = a % b;
-            a = b;
-            b = remainder;
+        return getGcdByEuclideanAlgorithmRecursion(Math.max(m, n), Math.min(m, n));
+    }
+
+    /**
+     * <p>Входные параметры - положительные целые числа.
+     * Рекурсивный вариант алгоритма Евклида
+     */
+    static int getGcdByEuclideanAlgorithmRecursion(int m, int n) {
+        if (n == 0) {
+            return m;
         }
 
-        return a;
+        return getGcdByEuclideanAlgorithmRecursion(n, m % n);
     }
 }
