@@ -20,11 +20,39 @@ package com.walking.intensive.chapter2.task8;
  */
 public class Task8 {
     public static void main(String[] args) {
-//        Для собственных проверок можете делать любые изменения в этом методе
+        System.out.println(getHappyTicketChance());
+    }
+
+    static int sumOfDigits(int num) {
+        int sum = 0;
+
+        while (num > 0) {
+            sum += num % 10;
+            num = num / 10;
+        }
+
+        return sum;
+    }
+
+    static boolean isLucky(int l, int r) {
+        return sumOfDigits(l) == sumOfDigits(r);
     }
 
     static double getHappyTicketChance() {
-        // Ваш код
-        return 0.0;
+        int maxTicketNumber = 999999;
+        int counterLuckyTicket =0;
+        int maxNumberPart =999;
+
+        // Разделим номер билетика на 2 части
+        for (int i = 0; i <= maxNumberPart ; i++) {
+            for (int j = 0; j <= maxNumberPart ; j++) {
+                if(isLucky(i,j)){
+                    counterLuckyTicket++;
+                }
+            }
+        }
+
+        // Это округление - для прохождения тестов
+        return Math.round(counterLuckyTicket/ (double)maxTicketNumber * 1000000) / 1000000.0;
     }
 }
