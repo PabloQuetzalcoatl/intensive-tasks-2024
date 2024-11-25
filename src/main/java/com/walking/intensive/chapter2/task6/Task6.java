@@ -70,9 +70,9 @@ public class Task6 {
         int a = Math.max(m, n);
         int b = Math.min(m, n);
         while (b != 0) {
-            int ostatok = a % b;
+            int remainder = a % b;
             a = b;
-            b = ostatok;
+            b = remainder;
         }
 
         return a;
