@@ -23,21 +23,6 @@ public class Task8 {
         System.out.println(getHappyTicketChance());
     }
 
-    static int getDigitsSum(int num) {
-        int sum = 0;
-
-        while (num > 0) {
-            sum += num % 10;
-            num = num / 10;
-        }
-
-        return sum;
-    }
-
-    static boolean isLucky(int left, int right) {
-        return getDigitsSum(left) == getDigitsSum(right);
-    }
-
     static double getHappyTicketChance() {
         int maxTicketNumber = 999999;
         int counterLuckyTicket = 0;
@@ -54,5 +39,20 @@ public class Task8 {
 
         // Это округление - для прохождения тестов
         return Math.round(counterLuckyTicket / (double) maxTicketNumber * 1000000) / 1000000.0;
+    }
+
+    static int getDigitsSum(int num) {
+        int sum = 0;
+
+        while (num > 0) {
+            sum += num % 10;
+            num = num / 10;
+        }
+
+        return sum;
+    }
+
+    static boolean isLucky(int left, int right) {
+        return getDigitsSum(left) == getDigitsSum(right);
     }
 }
