@@ -34,8 +34,8 @@ public class Task8 {
         return sum;
     }
 
-    static boolean isLucky(int l, int r) {
-        return getDigitsSum(l) == getDigitsSum(r);
+    static boolean isLucky(int left, int right) {
+        return getDigitsSum(left) == getDigitsSum(right);
     }
 
     static double getHappyTicketChance() {
