@@ -40,19 +40,19 @@ public class Task8 {
 
     static double getHappyTicketChance() {
         int maxTicketNumber = 999999;
-        int counterLuckyTicket =0;
-        int maxNumberPart =999;
+        int counterLuckyTicket = 0;
+        int maxNumberPart = 999;
 
         // Разделим номер билетика на 2 части
-        for (int i = 0; i <= maxNumberPart ; i++) {
-            for (int j = 0; j <= maxNumberPart ; j++) {
-                if(isLucky(i,j)){
+        for (int i = 0; i <= maxNumberPart; i++) {
+            for (int j = 0; j <= maxNumberPart; j++) {
+                if (isLucky(i, j)) {
                     counterLuckyTicket++;
                 }
             }
         }
 
         // Это округление - для прохождения тестов
-        return Math.round(counterLuckyTicket/ (double)maxTicketNumber * 1000000) / 1000000.0;
+        return Math.round(counterLuckyTicket / (double) maxTicketNumber * 1000000) / 1000000.0;
     }
 }
