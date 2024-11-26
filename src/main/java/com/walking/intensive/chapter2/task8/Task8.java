@@ -23,7 +23,7 @@ public class Task8 {
         System.out.println(getHappyTicketChance());
     }
 
-    static int sumOfDigits(int num) {
+    static int getDigitsSum(int num) {
         int sum = 0;
 
         while (num > 0) {
@@ -35,7 +35,7 @@ public class Task8 {
     }
 
     static boolean isLucky(int l, int r) {
-        return sumOfDigits(l) == sumOfDigits(r);
+        return getDigitsSum(l) == getDigitsSum(r);
     }
 
     static double getHappyTicketChance() {
