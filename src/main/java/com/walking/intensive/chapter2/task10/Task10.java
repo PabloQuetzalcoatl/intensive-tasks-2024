@@ -11,11 +11,44 @@ package com.walking.intensive.chapter2.task10;
  */
 public class Task10 {
     public static void main(String[] args) {
-//        Для собственных проверок можете делать любые изменения в этом методе
+
+        System.out.println(isPalindrome("Он ест сено!"));
+
     }
 
     static boolean isPalindrome(String inputString) {
-        // Ваш код
-        return false;
+        if (inputString == null){
+            return false;
+        }
+
+       if (inputString.length()<2){
+           return false;
+       }
+
+        inputString = deleteSymbol(inputString, " ");
+        inputString = deleteSymbol(inputString, ".");
+        inputString = deleteSymbol(inputString, ",");
+        inputString = deleteSymbol(inputString, "!");
+        inputString = deleteSymbol(inputString, "?");
+        inputString = deleteSymbol(inputString, ":");
+        inputString = deleteSymbol(inputString, ";");
+        inputString = deleteSymbol(inputString, "-");
+        inputString = inputString.toLowerCase();
+
+        int centralIndex = inputString.length() / 2;
+        int lastIndex = inputString.length() - 1;
+
+        for (int i = 0; i < centralIndex; i++) {
+            if (inputString.charAt(i) != inputString.charAt(lastIndex - i)) {
+                return false;
+            }
+        }
+
+        return true;
     }
+
+    static String deleteSymbol(String inputString, String symbol){
+        return inputString.replace(symbol, "");
+    }
+
 }
