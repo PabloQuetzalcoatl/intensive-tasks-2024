@@ -42,11 +42,26 @@ package com.walking.intensive.chapter3.task11;
  */
 public class Task11 {
     public static void main(String[] args) {
-//        Для собственных проверок можете делать любые изменения в этом методе
+
+        System.out.println(getOddSubArraysElementsSum(new int[]{1, 4, 2, 5, 3}));
+
     }
 
     static int getOddSubArraysElementsSum(int[] array) {
-        // Ваш код
-        return 0;
+        int allSubarraySum = 0;
+
+        // длина подмассива не может быть больше длины самого массива
+        for (int lengthSubarray = 1; lengthSubarray <= array.length; lengthSubarray += 2) {
+            // вырезаю подмассивы длиной lengthSub, начиная с начала массива
+            for (int start = 0; start + lengthSubarray - 1 < array.length; start++) {
+                // теперь пройдемся по исходному массиву, вырезая из него подмассив
+                for (int i = start; i < start + lengthSubarray; i++) {
+                    System.out.print(array[i]);
+                    allSubarraySum += array[i];
+                }
+            }
+        }
+
+        return allSubarraySum;
     }
 }
