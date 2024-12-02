@@ -48,6 +48,14 @@ public class Task11 {
     }
 
     static int getOddSubArraysElementsSum(int[] array) {
+
+        //проверим на корректность, согласно условию задачи
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < 0) {
+                return -1;
+            }
+        }
+
         int allSubarraySum = 0;
 
         // длина подмассива не может быть больше длины самого массива
