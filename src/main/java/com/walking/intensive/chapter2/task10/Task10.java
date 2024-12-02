@@ -17,22 +17,11 @@ public class Task10 {
     }
 
     static boolean isPalindrome(String inputString) {
-        if (inputString == null){
+        if (inputString == null || inputString.length() < 2) {
             return false;
         }
 
-       if (inputString.length()<2){
-           return false;
-       }
-
-        inputString = deleteSymbol(inputString, " ");
-        inputString = deleteSymbol(inputString, ".");
-        inputString = deleteSymbol(inputString, ",");
-        inputString = deleteSymbol(inputString, "!");
-        inputString = deleteSymbol(inputString, "?");
-        inputString = deleteSymbol(inputString, ":");
-        inputString = deleteSymbol(inputString, ";");
-        inputString = deleteSymbol(inputString, "-");
+        inputString = inputString.replaceAll("[\\p{Punct}\s]", "");
         inputString = inputString.toLowerCase();
 
         int centralIndex = inputString.length() / 2;
@@ -46,9 +35,4 @@ public class Task10 {
 
         return true;
     }
-
-    static String deleteSymbol(String inputString, String symbol){
-        return inputString.replace(symbol, "");
-    }
-
 }
