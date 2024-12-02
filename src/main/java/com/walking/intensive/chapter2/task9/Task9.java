@@ -51,36 +51,49 @@ package com.walking.intensive.chapter2.task9;
  */
 public class Task9 {
     public static void main(String[] args) {
-        getPascalTriangle(18);
+        System.out.println(getPascalTriangle(18));
     }
 
     static String getPascalTriangle(int n) {
-        //for (int i = 0; i < n; i++) {
+        StringBuilder result = new StringBuilder();
+
         int maxWidthLine = 0;
+
         for (int i = n - 1; i >= 0; i--) {
             String line = getPascalTriangleLine(i);
+
             if (line.length() > maxWidthLine) {
                 maxWidthLine = line.length();
             }
-            int leftSpaces = (maxWidthLine-line.length())/2;
-            StringBuilder spaces = new StringBuilder(leftSpaces);
-            spaces.append(" ".repeat(leftSpaces));
-            System.out.println(spaces.append(line).toString());
+
+            int leftSpaces = (maxWidthLine - line.length()) / 2;
+            StringBuilder spaces = new StringBuilder(getSpacedString(leftSpaces));
+            result.insert(0, spaces.append(line).append("\n"));
         }
 
-        return null;
+        return result.toString();
     }
+
     static String getPascalTriangleLine(int n) {
         StringBuilder line = new StringBuilder();
+
         int C = 1;
         line.append(C);
+
         for (int k = 1; k <= n; k++) {
-            C = C*(n-k+1)/k;
-            line.append(" "+C);
+            C = C * (n - k + 1) / k;
+            line.append(" ").append(C);
         }
+
         return line.toString();
     }
 
-
+    static String getSpacedString(int n) {
+        StringBuilder spaces = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            spaces.append(" ");
+        }
+        return spaces.toString();
+    }
     
 }
