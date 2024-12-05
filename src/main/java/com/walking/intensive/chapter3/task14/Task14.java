@@ -1,5 +1,6 @@
 package com.walking.intensive.chapter3.task14;
 
+
 /**
  * Необходимо разработать программу, которая определяет количество объектов на радарах.
  *
@@ -32,7 +33,7 @@ package com.walking.intensive.chapter3.task14;
  * <ul>
  * <li>objectCounts[0] = 3, потому что радар с координатами (2;3) и радиусом действия 1 видит объекты с координатами
  * (1;3), (2;2) и (3;3). Всего 3 объекта.
- *</ul>
+ * </ul>
  *
  * <p>При наличии некорректных входных данных верните из метода пустой массив.
  *
@@ -43,11 +44,68 @@ package com.walking.intensive.chapter3.task14;
  */
 public class Task14 {
     public static void main(String[] args) {
-//        Для собственных проверок можете делать любые изменения в этом методе
+
+//        System.out.println(Arrays.toString(getObjectCounts(new int[][]{{1, 3}, {3, 3}, {5, 3}, {2, 2}},
+//                new int[][]{{2, 3, 1}, {4, 3, 1}, {1, 1, 2}})));
+
     }
 
     static int[] getObjectCounts(int[][] objectLocations, int[][] radars) {
-        // Ваш код
-        return new int[0];
+        if (!isValid(objectLocations, radars)) {
+            return new int[]{};
+        }
+
+        int[] objectCounts = new int[radars.length];
+        int objectViewed;
+
+        for (int i = 0; i < radars.length; i++) {
+            int[] radar = radars[i];
+            objectViewed = 0;
+            for (int[] obj : objectLocations) {
+                if (distance2(radar, obj) <= sqr(radar[2])) {
+                    objectViewed++;
+                }
+            }
+            objectCounts[i] = objectViewed;
+        }
+        return objectCounts;
+    }
+
+    static int sqr(int x) {
+        return x * x;
+    }
+
+    static int distance2(int[] point1, int[] point2) {
+        return sqr(point1[0] - point2[0]) + sqr(point1[1] - point2[1]);
+    }
+
+    static boolean isValid(int[][] objectLocations, int[][] radars) {
+        return isValidRadars(radars) && isValidPoints(objectLocations);
+    }
+
+    static boolean isValidRadars(int[][] radars) {
+        for (int[] radar : radars) {
+            if (radar.length != 3) {
+                return false;
+            }
+            if (radar[2] < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    static boolean isValidPoints(int[][] points) {
+        for (int[] point : points) {
+            if (point.length != 2) {
+                return false;
+            }
+        }
+        return true;
     }
 }
+
+
+
+
+
