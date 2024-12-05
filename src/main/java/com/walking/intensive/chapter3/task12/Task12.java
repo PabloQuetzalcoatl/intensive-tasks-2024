@@ -67,7 +67,6 @@ public class Task12 {
                 return false;
             }
         }
-
         return true;
     }
 }
