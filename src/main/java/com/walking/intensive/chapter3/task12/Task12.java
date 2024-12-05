@@ -50,25 +50,20 @@ public class Task12 {
         }
 
         int[] result = new int[baskets.length()];
-
-        // ну по сути для каждой ячейки нужно вычислить расстояние от других ячеек до неё
         for (int i = 0; i < baskets.length(); i++) {
-
-            // высчитаем расстояние от ячейки i до каждой из остальных, кроме самой себя
             for (int j = 0; j < baskets.length(); j++) {
-                if (j != i && baskets.charAt(j) == '1') {
+                if (baskets.charAt(j) == '1') {
                     result[i] += Math.abs(j - i);
                 }
             }
-
         }
         return result;
     }
 
     static boolean isValid(String baskets) {
-
         for (int i = 0; i < baskets.length(); i++) {
-            if (baskets.charAt(i) != '1' && baskets.charAt(i) != '0') {
+            char basket =baskets.charAt(i);
+            if ( basket != '1' && basket != '0') {
                 return false;
             }
         }
