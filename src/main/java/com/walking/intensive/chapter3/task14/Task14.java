@@ -75,6 +75,9 @@ public class Task14 {
         return x * x;
     }
 
+    /**
+     * возвращает квадрат рассояния между точками
+     */
     static int distance2(int[] point1, int[] point2) {
         return sqr(point1[0] - point2[0]) + sqr(point1[1] - point2[1]);
     }
