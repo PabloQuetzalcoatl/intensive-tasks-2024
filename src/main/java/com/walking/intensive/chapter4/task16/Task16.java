@@ -29,8 +29,7 @@ public class Task16 {
      * В остальных случаях - false.
      */
     static boolean isEqualSize(int[] arr1, int[] arr2) {
-        // Ваш код
-        return false;
+        return arr1.length == arr2.length && arr1.length > 0;
     }
 
     /**
@@ -41,8 +40,15 @@ public class Task16 {
      * <p>Идентичными считаются массивы одинаковой длины, для которых arr1[i] == arr2[i] для любого i.
      */
     static boolean isEquals(int[] arr1, int[] arr2) {
-        // Ваш код
-        return false;
+        if (arr1.length != arr2.length) {
+            return false;
+        }
+        for (int i = 0; i < arr1.length; i++) {
+            if (arr1[i] != arr2[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -58,8 +64,11 @@ public class Task16 {
      * <p>Возвращаемое значение: [11,21,31,41,51,21,61]
      */
     static int[] incrementEach(int[] arr) {
-        // Ваш код
-        return null;
+        int[] out = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            out[i] = arr[i] + 1;
+        }
+        return out;
     }
 
     /**
@@ -78,8 +87,13 @@ public class Task16 {
      * <p>Возвращаемое значение: [8,15,24]
      */
     static int[] multiplyEach(int[] arr1, int[] arr2) {
-        // Ваш код
-        return null;
+        int maxLen = Math.max(arr1.length, arr2.length);
+        int minLen = Math.min(arr1.length, arr2.length);
+        int[] out = new int[maxLen];
+        for (int i = 0; i < minLen; i++) {
+            out[i] = arr1[i] * arr2[i];
+        }
+        return out;
     }
 
     /**
@@ -98,8 +112,14 @@ public class Task16 {
      * <p>Возвращаемое значение: [-2,-2,2]
      */
     static int[] subtractEach(int[] arr1, int[] arr2) {
-        // Ваш код
-        return null;
+        int maxLen = Math.max(arr1.length, arr2.length);
+        int[] out = new int[maxLen];
+        for (int i = 0; i < maxLen; i++) {
+            int a1 = (i<arr1.length)?arr1[i] : 0;
+            int a2 = (i<arr2.length)?arr2[i] : 0;
+            out[i] = a1 - a2;
+        }
+        return out;
     }
 
     /**
@@ -115,8 +135,11 @@ public class Task16 {
      * <p>Возвращаемое значение: [4,3,2]
      */
     static int[] reverse(int[] arr) {
-        // Ваш код
-        return null;
+        int[] out = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            out[arr.length-i-1]=arr[i];
+        }
+        return out;
     }
 
     /**
@@ -134,8 +157,26 @@ public class Task16 {
      * <p>Возвращаемое значение: [1,2,456,3,4]
      */
     static int[] add(int[] arr, int index, int newValue) {
-        // Ваш код
-        return null;
+        if (index<0){
+            return new int[0];
+        }
+
+        if (index> arr.length){
+            index = arr.length;
+        }
+
+        int[] out = new int[arr.length+1];
+        for (int i = 0; i < index; i++) {
+            out[i]=arr[i];
+        }
+
+        out[index]=newValue;
+
+        for (int i = index; i < arr.length; i++) {
+            out[i+1]=arr[i];
+        }
+
+        return out;
     }
 
     /**
@@ -144,7 +185,11 @@ public class Task16 {
      * В остальных случаях - false.
      */
     static boolean isContains(int[] arr, int value) {
-        // Ваш код
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i]==value){
+                return true;
+            }
+        }
         return false;
     }
 
@@ -169,8 +214,12 @@ public class Task16 {
      * </ul>
      */
     static int getFirstIndex(int[] arr, int value) {
-        // Ваш код
-        return 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i]==value){
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -194,8 +243,12 @@ public class Task16 {
      * </ul>
      */
     static int getLastIndex(int[] arr, int value) {
-        // Ваш код
-        return 0;
+        for (int i = arr.length-1; i >= 0 ; i--) {
+            if (arr[i]==value){
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
