@@ -21,7 +21,7 @@ package com.walking.intensive.chapter4.task17;
  */
 public class Task17 {
     public static void main(String[] args) {
-//        Для собственных проверок можете делать любые изменения в этом методе
+        sortByBubble(new int[]{5, 9, 12, 7, 6, 0, 4, 3, 2, 1});
     }
 
     /**
@@ -40,9 +40,21 @@ public class Task17 {
      * </ol>
      */
     static int[] sortByBubble(int[] array) {
-        // Ваш код
-        return new int[]{};
+        if (array == null) {
+            return new int[]{};
+        }
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    int tmp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = tmp;
+                }
+            }
+        }
+        return array;
     }
+
     /**
      * Быстрая сортировка, она же QuickSort:
      *
